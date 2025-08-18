@@ -1,0 +1,230 @@
+# 🌱 Pest Detection System
+
+An intelligent agricultural assistant that helps farmers identify and manage crop pests and diseases using AI-powered image analysis and multilingual chat support.
+
+## 🚀 Features
+
+- **AI-Powered Pest Detection**: Uses Vision Transformer (ViT) model for accurate pest and disease identification
+- **Multilingual Support**: Chat interface supports English, Hindi, Tamil, and Telugu
+- **Image Analysis**: Upload crop images for instant pest detection and recommendations
+- **Expert Recommendations**: Get farming advice, treatment suggestions, and preventive measures
+- **Mobile-Friendly**: React Native frontend for easy field use
+- **REST API**: Flask backend with comprehensive API endpoints
+
+## 🏗️ Project Structure
+
+```
+pest-early-detection/
+├── frontend/                 # React Native mobile app
+│   ├── app/                 # App screens and components
+│   ├── assets/              # Images, fonts, and static assets
+│   └── translations/        # Multilingual support files
+├── model/                   # Pre-trained ViT model files
+│   ├── config.json
+│   ├── model.safetensors
+│   └── preprocessor_config.json
+├── app.py                   # Flask API server
+├── llm.py                   # LLM integration (Together AI)
+├── vision_model.py          # Image classification logic
+├── requirements.txt         # Python dependencies
+└── .env                     # Environment variables
+```
+
+## 🛠️ Backend Setup
+
+### Prerequisites
+- Python 3.8+
+- pip package manager
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd "pest early detection"
+   ```
+
+2. **Create virtual environment**
+   ```bash
+   python -m venv .venv
+   .venv\Scripts\activate  # Windows
+   # source .venv/bin/activate  # macOS/Linux
+   ```
+
+3. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Set up environment variables**
+   Create a `.env` file in the root directory:
+   ```env
+   TOGETHER_API_KEY=your_together_ai_api_key_here
+   ```
+
+5. **Run the Flask server**
+   ```bash
+   python app.py
+   ```
+   Server will start at `http://localhost:5000`
+
+## 📱 Frontend Setup
+
+### Prerequisites
+- Node.js 16+
+- Expo CLI
+- React Native development environment
+
+### Installation
+
+1. **Navigate to frontend directory**
+   ```bash
+   cd frontend
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**
+   ```bash
+   npx expo start
+   ```
+
+4. **Run on device**
+   - Scan QR code with Expo Go app (iOS/Android)
+   - Or use iOS Simulator / Android Emulator
+
+## 🔌 API Documentation
+
+### Base URL
+```
+http://localhost:5000
+```
+
+### Endpoints
+
+#### POST `/predict`
+Analyze images and/or text for pest detection and agricultural advice.
+
+**Request Body:**
+```json
+{
+  "message": "What's wrong with my tomato plants?",
+  "image": "base64_encoded_image_string",
+  "language": "en"
+}
+```
+
+**Parameters:**
+- `message` (string, optional): Text query about agricultural issues
+- `image` (string, optional): Base64 encoded image of crop/plant
+- `language` (string, optional): Response language (`en`, `hi`, `ta`, `te`). Default: `en`
+
+**Response:**
+```json
+{
+  "response": "Based on the image analysis, your tomato plants show signs of early blight disease..."
+}
+```
+
+**Use Cases:**
+1. **Text only**: Ask agricultural questions
+2. **Image only**: Upload crop image for pest detection
+3. **Text + Image**: Combine image analysis with specific questions
+
+## 🌍 Supported Languages
+
+- **English** (`en`) - English
+- **Hindi** (`hi`) - हिंदी
+- **Tamil** (`ta`) - தமிழ்
+- **Telugu** (`te`) - తెలుగు
+
+## 🤖 AI Models
+
+### Vision Model
+- **Architecture**: Vision Transformer (ViT)
+- **Purpose**: Plant disease and pest classification
+- **Input**: RGB images (224x224)
+- **Output**: Top-5 predictions with confidence scores
+
+### Language Model
+- **Provider**: Together AI
+- **Model**: Meta-Llama-3.1-8B-Instruct-Turbo
+- **Purpose**: Agricultural advice and multilingual responses
+- **Capabilities**: Pest management, farming practices, treatment recommendations
+
+## 📋 Usage Examples
+
+### 1. Text Query
+```bash
+curl -X POST http://localhost:5000/predict \
+  -H "Content-Type: application/json" \
+  -d '{
+    "message": "How to prevent aphids on my crops?",
+    "language": "en"
+  }'
+```
+
+### 2. Image Analysis
+```bash
+curl -X POST http://localhost:5000/predict \
+  -H "Content-Type: application/json" \
+  -d '{
+    "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQ...",
+    "language": "hi"
+  }'
+```
+
+### 3. Combined Query
+```bash
+curl -X POST http://localhost:5000/predict \
+  -H "Content-Type: application/json" \
+  -d '{
+    "message": "Is this disease serious?",
+    "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQ...",
+    "language": "ta"
+  }'
+```
+
+## 🚨 Troubleshooting
+
+### Common Issues
+
+1. **ModuleNotFoundError**: Ensure virtual environment is activated and dependencies are installed
+2. **API Key Error**: Check `.env` file contains valid `TOGETHER_API_KEY`
+3. **Model Loading Error**: Verify model files exist in `./model/` directory
+4. **Port Already in Use**: Change port in `app.py` or kill existing process
+
+### Logs
+Check Flask console output for detailed error messages and debugging information.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🙏 Acknowledgments
+
+- Hugging Face for Vision Transformer models
+- Together AI for language model API
+- React Native and Expo for mobile framework
+- Flask for web framework
+
+## 📞 Support
+
+For support and questions:
+- Create an issue in the repository
+- Contact the development team
+
+---
+
+**Made with ❤️ for farmers and agricultural communities**

@@ -1,0 +1,8 @@
+flask
+torch
+torchvision
+transformers
+pillow
+together
+python-dotenv
+requests
