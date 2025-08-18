@@ -145,15 +145,42 @@ Analyze images and/or text for pest detection and agricultural advice.
 
 ### Vision Model
 - **Architecture**: Vision Transformer (ViT)
+- **Base Model**: google/vit-base-patch16-224
 - **Purpose**: Plant disease and pest classification
 - **Input**: RGB images (224x224)
 - **Output**: Top-5 predictions with confidence scores
+- **Classes**: 15 different plant diseases and healthy states
 
 ### Language Model
 - **Provider**: Together AI
 - **Model**: Meta-Llama-3.1-8B-Instruct-Turbo
 - **Purpose**: Agricultural advice and multilingual responses
 - **Capabilities**: Pest management, farming practices, treatment recommendations
+
+## 🧠 Model Training
+
+The Vision Transformer model was fine-tuned using the process documented in `PestDetection.ipynb`. This notebook contains:
+
+### Training Process
+- **Dataset**: PlantVillage dataset (20,638 images) from `ButterChicken98/plantvillage-image-text-pairs`
+- **Base Model**: Pre-trained `google/vit-base-patch16-224` from Hugging Face
+- **Training Split**: 80% training (16,510 images), 20% validation (4,128 images)
+- **Classes**: 15 plant disease categories including healthy states
+
+### Training Configuration
+- **Epochs**: 3
+- **Batch Size**: 16 per device
+- **Learning Rate**: 2e-5
+- **Optimizer**: AdamW with warmup steps
+- **Evaluation**: Accuracy and F1-score metrics
+
+### Model Output
+The trained model is saved in the `./model/` directory with:
+- `config.json` - Model configuration
+- `model.safetensors` - Model weights
+- `preprocessor_config.json` - Image preprocessing settings
+
+To retrain or modify the model, run the `PestDetection.ipynb` notebook in a Jupyter environment with GPU support.
 
 ## 📋 Usage Examples
 
