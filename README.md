@@ -1,4 +1,4 @@
-# 🌱 Pest Detection System
+# 🌱 Pest Early Detection
   An intelligent agricultural assistant that helps farmers identify and manage crop pests and diseases using AI-powered image analysis and multilingual chat support.
  
 ## 🚀 Features
