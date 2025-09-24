@@ -1,7 +1,6 @@
 # 🌱 Pest Detection System
-
-An intelligent agricultural assistant that helps farmers identify and manage crop pests and diseases using AI-powered image analysis and multilingual chat support.
-
+  An intelligent agricultural assistant that helps farmers identify and manage crop pests and diseases using AI-powered image analysis and multilingual chat support.
+ 
 ## 🚀 Features
 
 - **AI-Powered Pest Detection**: Uses Vision Transformer (ViT) model for accurate pest and disease identification
@@ -10,26 +9,50 @@ An intelligent agricultural assistant that helps farmers identify and manage cro
 - **Expert Recommendations**: Get farming advice, treatment suggestions, and preventive measures
 - **Mobile-Friendly**: React Native frontend for easy field use
 - **REST API**: Flask backend with comprehensive API endpoints
+  
+## 🧰 Tech Stack
 
+  - Backend:
+    - Python 3.8+
+    - Flask (REST API)
+    - python-dotenv, requests
+  
+  - AI and ML:
+    - PyTorch, TorchVision
+    - Transformers (Hugging Face)
+    - Vision Transformer (ViT) - google/vit-base-patch16-224
+    - Together AI Python SDK
+  
+  - Frontend:
+    - React Native 0.79.5, React 19
+    - Expo 53 (Expo Router 5)
+    - React Navigation
+    - i18next, react-i18next
+    - TypeScript
+  
+  - Tooling:
+    - Node.js 16+
+    - Expo CLI
+  
 ## 🏗️ Project Structure
 
-```
+  ```
 pest-early-detection/
-├── frontend/                 # React Native mobile app
-│   ├── app/                 # App screens and components
-│   ├── assets/              # Images, fonts, and static assets
-│   └── translations/        # Multilingual support files
-├── model/                   # Pre-trained ViT model files
-│   ├── config.json
-│   ├── model.safetensors
-│   └── preprocessor_config.json
-├── app.py                   # Flask API server
-├── llm.py                   # LLM integration (Together AI)
-├── vision_model.py          # Image classification logic
-├── requirements.txt         # Python dependencies
-└── .env                     # Environment variables
-```
-
+    ├── frontend/                 # React Native mobile app
+    │   ├── app/                 # App screens and components
+    │   ├── assets/              # Images, fonts, and static assets
+    │   └── translations/        # Multilingual support files
+    ├── model/                   # Pre-trained ViT model files
+    │   ├── config.json
+    │   ├── model.safetensors
+    │   └── preprocessor_config.json
+    ├── app.py                   # Flask API server
+    ├── llm.py                   # LLM integration (Together AI)
+    ├── vision_model.py          # Image classification logic
+    ├── requirements.txt         # Python dependencies
+    └── .env                     # Environment variables
+  ```
+  
 ## 🛠️ Backend Setup
 
 ### Prerequisites
@@ -43,7 +66,6 @@ pest-early-detection/
    git clone <repository-url>
    cd "pest early detection"
    ```
-
 2. **Create virtual environment**
    ```bash
    python -m venv .venv
@@ -215,43 +237,7 @@ curl -X POST http://localhost:5000/predict \
   }'
 ```
 
-## 🚨 Troubleshooting
-
-### Common Issues
-
-1. **ModuleNotFoundError**: Ensure virtual environment is activated and dependencies are installed
-2. **API Key Error**: Check `.env` file contains valid `TOGETHER_API_KEY`
-3. **Model Loading Error**: Verify model files exist in `./model/` directory
-4. **Port Already in Use**: Change port in `app.py` or kill existing process
-
-### Logs
-Check Flask console output for detailed error messages and debugging information.
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
 ## 🙏 Acknowledgments
 
-- Hugging Face for Vision Transformer models
-- Together AI for language model API
-- React Native and Expo for mobile framework
-- Flask for web framework
+- Developed during the Capital One Launchpad 2025 Hackathon
 
-## 📞 Support
-
-For support and questions:
-- Create an issue in the repository
-- Contact the development team
-
----
-
-**Made with ❤️ for farmers and agricultural communities**
